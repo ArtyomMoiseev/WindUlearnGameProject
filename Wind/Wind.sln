@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wind.Models", "Wind.Models\Wind.Models.csproj", "{91A308FF-82B4-4684-BAAA-7A357B9A8F51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wind.Models.Test", "Wind.Models.Test\Wind.Models.Test.csproj", "{343218EB-2B02-4066-8A43-786A7F112BEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wind.Models.Test", "Wind.Models.Test\Wind.Models.Test.csproj", "{343218EB-2B02-4066-8A43-786A7F112BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wind.Forms", "Wind.Forms\Wind.Forms.csproj", "{1677BF4D-3FD5-4FD7-81D5-1D920CEEAB03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{343218EB-2B02-4066-8A43-786A7F112BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{343218EB-2B02-4066-8A43-786A7F112BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{343218EB-2B02-4066-8A43-786A7F112BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1677BF4D-3FD5-4FD7-81D5-1D920CEEAB03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1677BF4D-3FD5-4FD7-81D5-1D920CEEAB03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1677BF4D-3FD5-4FD7-81D5-1D920CEEAB03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1677BF4D-3FD5-4FD7-81D5-1D920CEEAB03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
