@@ -13,13 +13,15 @@ namespace Wind.Forms
         private readonly Dictionary<string, Bitmap> bitmaps = new Dictionary<string, Bitmap>();
         //private readonly GameState gameState;
         private int tickCount;
+        private int elementSize = 100;
+        private int Height = 6;
+        private int Width = 9;
 
-
-        public DiggerWindow(DirectoryInfo imagesDirectory = null)
+        public void DiggerWindow(DirectoryInfo imagesDirectory = null)
         {
             ClientSize = new Size(
-                Game.ElementSize * GameField.Width,
-                Game.ElementSize * GameField.Height + Game.ElementSize);
+                elementSize * Width,
+                elementSize * Height + elementSize); ;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             if (imagesDirectory == null)
                 imagesDirectory = new DirectoryInfo("Images");
@@ -42,10 +44,10 @@ namespace Wind.Forms
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            e.Graphics.TranslateTransform(0, Game.ElementSize);
+            e.Graphics.TranslateTransform(0, elementSize);
             e.Graphics.FillRectangle(
-                Brushes.Black, 0, 0, Game.ElementSize * GameField.MapWidth,
-                Game.ElementSize * GameField.MapHeight);
+                Brushes.Black, 0, 0, elementSize * Width,
+                elementSize * Height);
             //foreach (var a in gameState.Animations)
              //   e.Graphics.DrawImage(bitmaps[a.Creature.GetImageFileName()], a.Location);
             //e.Graphics.ResetTransform();

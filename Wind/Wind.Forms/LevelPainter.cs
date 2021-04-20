@@ -13,7 +13,7 @@ namespace Wind.Forms
 		public Size LevelSize => new Size(DefaultGameObjects.Field.Width, DefaultGameObjects.Field.Width);
 
 		private readonly Dictionary<IGameMapObject, Point[]> paths;
-		private GameField currentMap;
+		private IGameMapObject currentMap;
 		private int mainIteration;
 		private Bitmap mapImage;
 
@@ -28,7 +28,7 @@ namespace Wind.Forms
 			CreateMap();
 		}
 
-		public void ChangeLevel(GameField newMap)
+		public void ChangeLevel(IGameMapObject newMap)
 		{
 			currentMap = newMap;
 			CreateMap();
@@ -65,8 +65,10 @@ namespace Wind.Forms
 				{
 					for (var y = 0; y < DefaultGameObjects.Field.Height; y++)
                     {
-                        var image = DefaultGameObjects.Field.Map[x, y] == IGameMapObject.IsWall ? DefaultGameObjects.Terrain : DefaultGameObjects.Terrain.ObjectImage;
-						graphics.DrawImage(image, new Rectangle(x * cellWidth, y * cellHeight, cellWidth, cellHeight));
+						Image newImage = Image.FromFile("Images/Terrain.png");
+
+						var image = DefaultGameObjects.Terrain.ObjectImage;
+						graphics.DrawImage(newImage, new Rectangle(x * cellWidth, y * cellHeight, cellWidth, cellHeight));
 					}
 				}
 			}

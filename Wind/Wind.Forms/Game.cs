@@ -14,7 +14,7 @@ namespace Wind.Forms
     {
         public Game()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }
