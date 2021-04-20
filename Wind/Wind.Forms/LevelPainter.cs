@@ -9,8 +9,8 @@ namespace Wind.Forms
 {
     public class LevelPainter
     {
-		public SizeF Size => new SizeF(currentMap.Dungeon.GetLength(0), currentMap.Dungeon.GetLength(1));
-		public Size LevelSize => new Size(currentMap.Dungeon.GetLength(0), currentMap.Dungeon.GetLength(1));
+		public SizeF Size => new SizeF(DefaultGameObjects.Field.Width, DefaultGameObjects.Field.Height);
+		public Size LevelSize => new Size(DefaultGameObjects.Field.Width, DefaultGameObjects.Field.Width);
 
 		private readonly Dictionary<IGameMapObject, Point[]> paths;
 		private GameField currentMap;
@@ -18,11 +18,10 @@ namespace Wind.Forms
 		private Bitmap mapImage;
 
 		private Point? lastMouseClick;
-		private IEnumerable<List<Point>> pathsToChests;
 
-		public void ScenePainter(IGameMapObject[] maps)
+        public void ScenePainter(IGameMapObject[] maps)
 		{
-			paths = maps.ToDictionary(x => x, x => TransformPath(x, DungeonTask.FindShortestPath(x)).ToArray());
+			//paths = maps.ToDictionary(x => x, x => TransformPath(x, DungeonTask.FindShortestPath(x)).ToArray());
 
 			currentMap = maps[0];
 			mainIteration = 0;
@@ -35,8 +34,7 @@ namespace Wind.Forms
 			CreateMap();
 			mainIteration = 0;
 			lastMouseClick = null;
-			pathsToChests = null;
-		}
+        }
 
 		public void Update()
 		{
@@ -58,16 +56,16 @@ namespace Wind.Forms
 
 		private void CreateMap()
 		{
-			var cellWidth = Properties.Resources.Terrain.Width;
-			var cellHeight = Properties.Resources.Terrain.Height;
+			var cellWidth = 512;
+			var cellHeight = 512;
 			mapImage = new Bitmap(LevelSize.Width * cellWidth, LevelSize.Height * cellHeight);
 			using (var graphics = Graphics.FromImage(mapImage))
 			{
-				for (var x = 0; x < currentMap.GameField.GetLength(0); x++)
+				for (var x = 0; x < DefaultGameObjects.Field.Width; x++)
 				{
-					for (var y = 0; y < currentMap.Dungeon.GetLength(1); y++)
-					{
-						var image = currentMap.GameField[x, y] == IGameMapObject.Wall ? Properties.Resources.Terrain : Properties.Resources.Path;
+					for (var y = 0; y < DefaultGameObjects.Field.Height; y++)
+                    {
+                        var image = DefaultGameObjects.Field.Map[x, y] == IGameMapObject.IsWall ? DefaultGameObjects.Terrain : DefaultGameObjects.Terrain.ObjectImage;
 						graphics.DrawImage(image, new Rectangle(x * cellWidth, y * cellHeight, cellWidth, cellHeight));
 					}
 				}

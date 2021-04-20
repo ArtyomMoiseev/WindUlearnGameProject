@@ -7,6 +7,11 @@
             get;
         }
 
+        bool IsWall
+        {
+            get;
+        }
+
         string ObjectImage
         {
             get;

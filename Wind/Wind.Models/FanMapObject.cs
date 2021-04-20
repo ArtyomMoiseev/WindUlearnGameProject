@@ -1,4 +1,6 @@
-﻿namespace Wind.Models
+﻿using System.Runtime.CompilerServices;
+
+namespace Wind.Models
 {
     public class FanMapObject : IGameMapObject
     {
@@ -15,5 +17,7 @@
 
         public bool IsStaticObject => false;
         public string ObjectImage => ImageName;
+
+        public bool IsWall => true;
     }
 }
