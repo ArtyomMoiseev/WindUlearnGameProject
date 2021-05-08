@@ -52,9 +52,21 @@
     <Compile Include="Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameObjects.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GameObjects.resx</DependentUpon>
+    </Compile>
     <Compile Include="LevelPainter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameObjects.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GameObjects.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,6 +94,21 @@
       <Project>{91a308ff-82b4-4684-baaa-7a357b9a8f51}</Project>
       <Name>Wind.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\End.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FanFirstSpeed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FanSecondSpeed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlyingObject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Terrain.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

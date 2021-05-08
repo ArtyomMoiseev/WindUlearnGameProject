@@ -11,15 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wind.Forms", "Wind.Forms\Wi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Levels", "Levels", "{766BA013-E95C-4A18-A890-CB4AFA10DF65}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{DC62E9AD-FD90-4F7C-88A6-B0AE76A4E42E}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Users\moise\Desktop\gameObjects\End.png = ..\..\..\..\Users\moise\Desktop\gameObjects\End.png
-		..\..\..\..\Users\moise\Desktop\gameObjects\FanFirstSpeed.png = ..\..\..\..\Users\moise\Desktop\gameObjects\FanFirstSpeed.png
-		..\..\..\..\Users\moise\Desktop\gameObjects\FanSecondSpeed.png = ..\..\..\..\Users\moise\Desktop\gameObjects\FanSecondSpeed.png
-		..\..\..\..\Users\moise\Desktop\gameObjects\FlyingObject.png = ..\..\..\..\Users\moise\Desktop\gameObjects\FlyingObject.png
-		..\..\..\..\Users\moise\Desktop\gameObjects\Terrain.png = ..\..\..\..\Users\moise\Desktop\gameObjects\Terrain.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

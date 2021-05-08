@@ -16,5 +16,23 @@ namespace Wind.Forms
         {
             //InitializeComponent();
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Game
+            // 
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "Game";
+            this.Load += new System.EventHandler(this.Game_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
