@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Wind.Forms
 {
-    public partial class Game : Form
+    public sealed partial class Game : Form
     {
         public Game()
         {
-            //InitializeComponent();
+            InitializeComponent();
+            InitLayout();
+            Invalidate();
         }
 
         private void InitializeComponent()
@@ -23,9 +25,12 @@ namespace Wind.Forms
             // 
             // Game
             // 
-            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.Name = "Game";
             this.Load += new System.EventHandler(this.Game_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClick);
             this.ResumeLayout(false);
 
         }
@@ -33,6 +38,20 @@ namespace Wind.Forms
         private void Game_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            g.DrawImage(GameObjects.FanFirstSpeed,100,100,120,120);
+            g.DrawImage(GameObjects.Terrain, 220, 100, 120, 120);
+            g.DrawImage(GameObjects.FlyingObject, 340, 100, 120, 120); 
+        }
+
+        private void OnClick(object sender, MouseEventArgs e)
+        {
+            if (e.X <= 220 && e.X >= 100)
+                throw new NotImplementedException();
         }
     }
 }

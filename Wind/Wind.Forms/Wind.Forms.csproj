@@ -49,9 +49,6 @@
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Game.Designer.cs">
-      <DependentUpon>Game.cs</DependentUpon>
-    </Compile>
     <Compile Include="GameObjects.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
