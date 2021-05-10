@@ -55,6 +55,7 @@
       <DependentUpon>GameObjects.resx</DependentUpon>
     </Compile>
     <Compile Include="LevelPainter.cs" />
+    <Compile Include="ObjectToImage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Game.resx">

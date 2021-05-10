@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wind.Models;
 
 namespace Wind.Forms
 {
@@ -43,6 +44,8 @@ namespace Wind.Forms
         private void OnPaint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
+            var level = DefaultGameObjects.testMap;
+
             g.DrawImage(GameObjects.FanFirstSpeed,100,100,120,120);
             g.DrawImage(GameObjects.Terrain, 220, 100, 120, 120);
             g.DrawImage(GameObjects.FlyingObject, 340, 100, 120, 120); 

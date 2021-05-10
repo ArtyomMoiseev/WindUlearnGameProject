@@ -12,7 +12,7 @@
             get;
         }
 
-        string ObjectImage
+        res ObjectImage
         {
             get;
         }
