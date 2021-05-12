@@ -11,8 +11,8 @@
         {
             get;
         }
-
-        res ObjectImage
+        
+        string ObjectImage
         {
             get;
         }
