@@ -27,6 +27,7 @@ namespace Wind.Forms
             // Game
             // 
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.Name = "Game";
             this.Load += new System.EventHandler(this.Game_Load);
@@ -38,17 +39,24 @@ namespace Wind.Forms
 
         private void Game_Load(object sender, EventArgs e)
         {
-
+ 
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
-            var level = DefaultGameObjects.testMap;
+            var toImage = new ObjectToImage();
+            var start = 0;
+            var size = 80;
+            var level = DefaultGameObjects.Field.Map;
 
-            g.DrawImage(GameObjects.FanFirstSpeed,100,100,120,120);
-            g.DrawImage(GameObjects.Terrain, 220, 100, 120, 120);
-            g.DrawImage(GameObjects.FlyingObject, 340, 100, 120, 120); 
+            for (var i = 0; i < level.GetLength(0); i++)
+            for (var j = 0; j < level.GetLength(1); j++)
+            {
+                if (level[i,j] == null)
+                    continue;
+                g.DrawImage(toImage.Bitmaps[level[i,j].ObjectImage], start + size * i, start + size * j, size, size);
+            }
         }
 
         private void OnClick(object sender, MouseEventArgs e)

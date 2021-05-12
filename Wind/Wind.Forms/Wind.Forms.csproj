@@ -99,16 +99,16 @@
     <None Include="Resources\End.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FanFirstSpeed.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\FanSecondSpeed.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FlyingObject.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Terrain.png" />
+    <None Include="Resources\Terrain.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FanFirstSpeed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,9 +5,12 @@ namespace Wind.Forms
 {
     public class ObjectToImage
     {
-        private Dictionary<string, Bitmap> bitmaps = new Dictionary<string, Bitmap>
+        public readonly Dictionary<string, Bitmap> Bitmaps = new Dictionary<string, Bitmap>
         {
             {"Terrain",GameObjects.Terrain},
+            {"FanFirstSpeed",GameObjects.FanFirstSpeed},
+            {"FanSecondSpeed",GameObjects.FanSecondSpeed},
+            {"End",GameObjects.End}
         };
     }
 }
