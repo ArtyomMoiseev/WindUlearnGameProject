@@ -10,6 +10,7 @@ namespace Wind.Forms
             {"Terrain",GameObjects.Terrain},
             {"FanFirstSpeed",GameObjects.FanFirstSpeed},
             {"FanSecondSpeed",GameObjects.FanSecondSpeed},
+            {"Sphere", GameObjects.FlyingObject},
             {"End",GameObjects.End}
         };
     }

@@ -23,9 +23,6 @@ namespace Wind.Forms
         private void InitializeComponent()
         {
             this.SuspendLayout();
-            // 
-            // Game
-            // 
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.CornflowerBlue;
@@ -42,21 +39,28 @@ namespace Wind.Forms
  
         }
 
+        private void TimerTick(object sender, EventArgs e)
+        {
+            Invalidate();
+            Update();
+        }
         private void OnPaint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
             var toImage = new ObjectToImage();
             var start = 0;
-            var size = 80;
+            var size = 120;
             var level = DefaultGameObjects.Field.Map;
+            var f = DefaultGameObjects.Field;
 
-            for (var i = 0; i < level.GetLength(0); i++)
-            for (var j = 0; j < level.GetLength(1); j++)
+            for (var i = 0; i < level.GetLength(1); i++)
+            for (var j = 0; j < level.GetLength(0); j++)
             {
-                if (level[i,j] == null)
+                if (level[j,i] == null)
                     continue;
-                g.DrawImage(toImage.Bitmaps[level[i,j].ObjectImage], start + size * i, start + size * j, size, size);
+                g.DrawImage(toImage.Bitmaps[level[j,i].ObjectImage], start + size * i, start + size * j, size, size);
             }
+
         }
 
         private void OnClick(object sender, MouseEventArgs e)

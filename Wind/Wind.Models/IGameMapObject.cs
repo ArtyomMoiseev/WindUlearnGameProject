@@ -16,5 +16,7 @@
         {
             get;
         }
+
+        Direction direction { get; set; }
     }
 }
