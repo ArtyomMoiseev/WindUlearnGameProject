@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Wind.Models
 {
@@ -8,21 +7,24 @@ namespace Wind.Models
     {
         private readonly Dictionary<char, IGameMapObject> objectsDictionary = new Dictionary<char, IGameMapObject>()
         {
-            {'t', new StaticObject("Terrain",0,0)}
+            {'t', new StaticObject("Terrain",0,0)},
+            {'f', DefaultGameObjects.Fan},
+            {'s', DefaultGameObjects.Sphere}
         };
 
         public IGameMapObject[,] ReadLevel(string fileName)
         {
             var levelText = File.ReadAllLines(fileName);
-            var level = new IGameMapObject[levelText.GetLength(0),levelText.GetLength(1)];
-            for (var i = 0; i <= levelText.GetLength(0); i++)
+            var level = new IGameMapObject[levelText.GetLength(0),levelText[0].Length];
+            for (var i = 0; i < levelText.GetLength(0); i++)
             {
                 var str = levelText[i].ToCharArray();
-                for (var j = 0; j <= str.Length; j++)
+                for (var j = 0; j < str.Length; j++)
                 {
                     if (!objectsDictionary.ContainsKey(str[j]))
                         level[i, j] = null;
-                    level[i, j] = objectsDictionary[str[j]];
+                    else
+                        level[i, j] = objectsDictionary[str[j]];
                 }
             }
 

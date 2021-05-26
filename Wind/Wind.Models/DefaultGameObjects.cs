@@ -5,7 +5,7 @@ namespace Wind.Models
     public static class DefaultGameObjects
     {
         public static IGameMapObject Terrain = new StaticObject("Terrain", 0, 0);
-        public static IGameMapObject Sphere = new FlyingMapObject(5, 10, "FlyingObject", 0);
+        public static IGameMapObject Sphere = new FlyingMapObject(5, 10, "Sphere", 0);
         public static IGameMapObject Fan = new FanMapObject(5, Direction.Up, "FanFirstSpeed");
 
         private static readonly IGameMapObject[,] TestMap =

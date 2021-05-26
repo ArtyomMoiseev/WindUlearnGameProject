@@ -50,7 +50,8 @@ namespace Wind.Forms
             var toImage = new ObjectToImage();
             var start = 0;
             var size = 120;
-            var level = DefaultGameObjects.Field.Map;
+            var reader = new LevelReader();
+            var level = reader.ReadLevel("LevelOne");
             var f = DefaultGameObjects.Field;
 
             for (var i = 0; i < level.GetLength(1); i++)
