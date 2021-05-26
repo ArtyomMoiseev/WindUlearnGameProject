@@ -6,7 +6,7 @@ namespace Wind.Models
     public class AirFlow
     {
         public double Flow;
-        public Direction Direction;
+        public Direction Direction { get;}
 
         public AirFlow(double flow, Direction direction)
         {
@@ -15,7 +15,7 @@ namespace Wind.Models
         }
 
 
-        public AirFlow[] CreateAirFlowMap(GameField field)
+        public AirFlow[,] CreateAirFlowMap(GameField field)
         {
             var flowMap = new AirFlow[field.Map.GetLength(0),field.Map.GetLength(1)];
             for (var i = 0; i< field.Map.GetLength(0);i++)
@@ -26,16 +26,29 @@ namespace Wind.Models
                 var count = 0;
                 if (field.Map[i, j].GetType() != typeof(FanMapObject)) continue;
                 if (field.Map[i, j].direction == Direction.Down)
-                {
                     while (x < field.Map.GetLength(0) || !field.Map[x,j + 1].IsStaticObject)
                     {
                         flowMap[i, y] = new AirFlow(10 - count * GameConst.Attenuation, Direction.Down);
                         y++;
                         count++;
                     }
+
+                if (field.Map[i, j].direction == Direction.Up)
+                {
+
                 }
 
+                if (field.Map[i, j].direction == Direction.Right)
+                {
+
+                }
+                if (field.Map[i, j].direction == Direction.Left)
+                {
+
+                }
             }
+
+            return flowMap;
         }
     }
 }

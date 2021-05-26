@@ -17,6 +17,7 @@ namespace Wind.Models
 
         public bool IsStaticObject => false;
         public string ObjectImage => ImageName;
+        public Direction direction { get; set; }
 
         public bool IsWall => true;
     }

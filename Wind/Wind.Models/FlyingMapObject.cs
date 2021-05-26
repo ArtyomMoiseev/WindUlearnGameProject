@@ -18,5 +18,6 @@
         public bool IsStaticObject => false;
         public bool IsWall => true;
         public string ObjectImage => ImageName;
+        public Direction direction { get; set; }
     }
 }
