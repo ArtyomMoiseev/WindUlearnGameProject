@@ -6,21 +6,24 @@ namespace Wind.Models
 {
     public class LevelReader
     {
-        private Dictionary<char, IGameMapObject> objectsDictionary = new Dictionary<char, IGameMapObject>()
+        private readonly Dictionary<char, IGameMapObject> objectsDictionary = new Dictionary<char, IGameMapObject>()
         {
             {'t', new StaticObject("Terrain",0,0)}
         };
 
         public IGameMapObject[,] ReadLevel(string fileName)
         {
-            var levelText = File.ReadAllLines(fileName).Select(a => a.ToCharArray()).T;
+            var levelText = File.ReadAllLines(fileName);
             var level = new IGameMapObject[levelText.GetLength(0),levelText.GetLength(1)];
-            for (var i = 0; i <=levelText.GetLength(0); i++)
-            for (var j = 0; j <=levelText.GetLength(1); j++)
+            for (var i = 0; i <= levelText.GetLength(0); i++)
             {
-                if (!objectsDictionary.ContainsKey(levelText[i,j]))
-                    level[i, j] = null;
-                level[i, j] = objectsDictionary[levelText[i, j]];
+                var str = levelText[i].ToCharArray();
+                for (var j = 0; j <= str.Length; j++)
+                {
+                    if (!objectsDictionary.ContainsKey(str[j]))
+                        level[i, j] = null;
+                    level[i, j] = objectsDictionary[str[j]];
+                }
             }
 
             return level;
