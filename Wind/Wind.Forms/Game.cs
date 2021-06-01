@@ -13,8 +13,20 @@ namespace Wind.Forms
 {
     public sealed partial class Game : Form
     {
-        public Game()
+        private readonly IGameMapObject[,] level;
+        private readonly int scale;
+        private readonly AirFlowNode[,] airMap;
+        private readonly int width;
+        private readonly int height;
+        public Game(string levelName, int scale, int width)
         {
+            var reader = new LevelReader();
+            level = reader.ReadLevel(levelName);
+            this.scale = scale;
+            var flow = new AirFlow();
+            airMap = flow.CreateAirFlowMap(level);
+            width = FormConst.ObjectSize * scale * level.GetLength(1);
+            height = FormConst.ObjectSize * scale * level.GetLength(0);
             InitializeComponent();
             InitLayout();
             Invalidate();
@@ -23,7 +35,7 @@ namespace Wind.Forms
         private void InitializeComponent()
         {
             this.SuspendLayout();
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(width,height);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.Name = "Game";
@@ -49,11 +61,7 @@ namespace Wind.Forms
             var g = e.Graphics;
             var toImage = new ObjectToImage();
             var start = 0;
-            var size = 120;
-            var reader = new LevelReader();
-            var level = reader.ReadLevel("LevelOne");
-            var f = DefaultGameObjects.Field;
-
+            var size = FormConst.ObjectSize * scale;
             for (var i = 0; i < level.GetLength(1); i++)
             for (var j = 0; j < level.GetLength(0); j++)
             {
@@ -66,8 +74,11 @@ namespace Wind.Forms
 
         private void OnClick(object sender, MouseEventArgs e)
         {
-            if (e.X <= 220 && e.X >= 100)
-                throw new NotImplementedException();
+            var xPoint = e.X / (FormConst.ObjectSize * scale);
+            var yPoint = e.Y / (FormConst.ObjectSize * scale);
+            Console.WriteLine(xPoint);
+            Console.WriteLine(yPoint);
+
         }
     }
 }
