@@ -18,7 +18,7 @@ namespace Wind.Forms
         private readonly AirFlowNode[,] airMap;
         private readonly int width;
         private readonly int height;
-        public Game(string levelName, int scale, int width)
+        public Game(string levelName, int scale)
         {
             var reader = new LevelReader();
             level = reader.ReadLevel(levelName);
