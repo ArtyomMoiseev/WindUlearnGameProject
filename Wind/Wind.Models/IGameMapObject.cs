@@ -17,6 +17,8 @@
             get;
         }
 
+        void Change();
+
         Direction direction { get; set; }
     }
 }

@@ -20,6 +20,11 @@ namespace Wind.Models
         public bool IsStaticObject => false;
         public bool IsWall => true;
         public string ObjectImage => ImageName;
+        public void Change()
+        {
+            throw new NotImplementedException();
+        }
+
         public Direction direction { get; set; }
     }
 }

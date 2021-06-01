@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Wind.Models
 {
@@ -21,42 +22,52 @@ namespace Wind.Models
             for (var i = 0; i < map.GetLength(0); i++)
             for (var j = 0; j < map.GetLength(1); j++)
             {
-                var x = i;
-                var y = j;
                 var count = 0;
                 if (map[i,j] == null || map[i, j].GetType() != typeof(FanMapObject)) continue;
                 if (map[i, j].direction == Direction.Down)
-                    while (y < map.GetLength(1) && !map[x, j].IsStaticObject)
+                {
+                    var x = i + 1;
+                    while (x < map.GetLength(0) && map[x, j] == null)
                     {
-                        flowMap[i, y] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Down);
-                        y++;
-                        count++;
-                    }
-
-                if (map[i, j].direction == Direction.Up)
-                    while (y > 0 && !map[x, j].IsStaticObject)
-                    {
-                        Console.WriteLine("a");
-                        flowMap[i, y] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Up);
-                        y--;
-                        count++;
-                    }
-
-                if (map[i, j].direction == Direction.Right)
-                    while (x < map.GetLength(0) && !map[i, y].IsStaticObject)
-                    {
-                        flowMap[x, j] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Right);
+                        flowMap[x, j] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Down);
                         x++;
                         count++;
                     }
+                }
 
-                if (map[i, j].direction == Direction.Left)
-                    while (x >= 0 && !map[i, y].IsStaticObject)
+                if (map[i, j].direction == Direction.Up)
+                {
+                    var x = i - 1;
+                    while (x >= 0 && map[x, j] == null)
                     {
-                        flowMap[x, j] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Left);
+                        Console.WriteLine("w");
+                        flowMap[i, j] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Up);
                         x--;
                         count++;
                     }
+                }
+
+                if (map[i, j].direction == Direction.Right)
+                {
+                    var y = j + 1;
+                    while (y < map.GetLength(1) && !map[i, y].IsStaticObject)
+                    {
+                        flowMap[i, y] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Right);
+                        y++;
+                        count++;
+                    }
+                }
+
+                if (map[i, j].direction == Direction.Left)
+                {
+                    var y = j - 1;
+                    while (y >= 0 && !map[i, y].IsStaticObject)
+                    {
+                        flowMap[i, y] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Left);
+                        y--;
+                        count++;
+                    }
+                }
             }
 
             return flowMap;

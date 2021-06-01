@@ -8,8 +8,8 @@ namespace Wind.Forms
         public readonly Dictionary<string, Bitmap> Bitmaps = new Dictionary<string, Bitmap>
         {
             {"Terrain",GameObjects.Terrain},
-            {"FanFirstSpeed",GameObjects.FanFirstSpeed},
-            {"FanSecondSpeed",GameObjects.FanSecondSpeed},
+            {"FanU",GameObjects.FanFirstSpeed},
+            {"FanUo",GameObjects.FanSecondSpeed},
             {"Sphere", GameObjects.FlyingObject},
             {"End",GameObjects.End}
         };

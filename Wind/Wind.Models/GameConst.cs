@@ -2,6 +2,6 @@
 {
     public class GameConst
     {
-        public const double Attenuation = 10;
+        public const double Attenuation = 1;
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,21 +16,28 @@ namespace Wind.Forms
     {
         private readonly IGameMapObject[,] level;
         private readonly int scale;
-        private readonly AirFlowNode[,] airMap;
+        private AirFlowNode[,] airMap;
         private readonly int width;
         private readonly int height;
+        private Point sphere;
         public Game(string levelName, int scale)
         {
             var reader = new LevelReader();
             level = reader.ReadLevel(levelName);
+            sphere = reader.FindSphere(levelName);
             this.scale = scale;
-            var flow = new AirFlow();
-            airMap = flow.CreateAirFlowMap(level);
+            UpdateAirMap();
             width = FormConst.ObjectSize * scale * level.GetLength(1);
             height = FormConst.ObjectSize * scale * level.GetLength(0);
             InitializeComponent();
             InitLayout();
             Invalidate();
+        }
+
+        private void UpdateAirMap()
+        {
+            var flow = new AirFlow();
+            airMap = flow.CreateAirFlowMap(level);
         }
 
         private void InitializeComponent()
@@ -55,7 +63,10 @@ namespace Wind.Forms
         {
             Invalidate();
             Update();
+            this.sta
+            Console.WriteLine(1);
         }
+
         private void OnPaint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -74,11 +85,12 @@ namespace Wind.Forms
 
         private void OnClick(object sender, MouseEventArgs e)
         {
-            var xPoint = e.X / (FormConst.ObjectSize * scale);
-            var yPoint = e.Y / (FormConst.ObjectSize * scale);
-            Console.WriteLine(xPoint);
-            Console.WriteLine(yPoint);
-
+            var x = e.X / (FormConst.ObjectSize * scale);
+            var y = e.Y / (FormConst.ObjectSize * scale);
+            if (level[y,x] != null)
+                level[y,x].Change();
+            UpdateAirMap();
+            this.Refresh();
         }
     }
 }
