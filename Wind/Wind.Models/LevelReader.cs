@@ -19,8 +19,7 @@ namespace Wind.Models
             },
             {'d', DefaultGameObjects.FanD},
             {'l', DefaultGameObjects.FanL},
-            {'r', DefaultGameObjects.FanR},
-            {'s', DefaultGameObjects.Sphere}
+            {'r', DefaultGameObjects.FanR}
         };
 
         public IGameMapObject[,] ReadLevel(string fileName)

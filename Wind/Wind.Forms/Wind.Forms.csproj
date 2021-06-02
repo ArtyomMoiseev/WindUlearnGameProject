@@ -106,7 +106,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Terrain.PNG" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\End.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FanFirstSpeed.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FanSecondSpeed.png" />
@@ -115,10 +121,7 @@
     <None Include="Resources\FlyingObject.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Terrain.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FanFirstSpeed.png" />
+    <None Include="Resources\Terrarin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
