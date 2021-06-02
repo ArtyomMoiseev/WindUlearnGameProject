@@ -22,8 +22,9 @@ namespace Wind.Models
         public string ObjectImage => ImageName;
         public void Change()
         {
-            throw new NotImplementedException();
         }
+
+        public double StreamForce { get; }
 
         public Direction direction { get; set; }
     }

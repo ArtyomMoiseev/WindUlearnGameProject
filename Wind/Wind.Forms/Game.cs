@@ -23,13 +23,12 @@ namespace Wind.Forms
         private IContainer components;
         private Timer timer1;
         private Point sphere;
-        private bool levelIsDraw = false;
         public Game(string levelName, int scale)
         {
             var reader = new LevelReader();
             level = reader.ReadLevel(levelName);
             var hardCords = reader.FindSphere(levelName);
-            sphere = new Point(FormConst.ObjectSize * scale * sphere.Y, FormConst.ObjectSize * scale * sphere.X);
+            sphere = new Point(FormConst.ObjectSize * scale * hardCords.X, FormConst.ObjectSize * scale * hardCords.Y);
             this.scale = scale;
             UpdateAirMap();
             width = FormConst.ObjectSize * scale * level.GetLength(1);
@@ -54,7 +53,7 @@ namespace Wind.Forms
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 20;
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // Game
@@ -90,8 +89,6 @@ namespace Wind.Forms
                 g.DrawImage(toImage.Bitmaps[level[j,i].ObjectImage], start + size * i, start + size * j, size, size);
             }
 
-            levelIsDraw = true;
-
             g.DrawImage(GameObjects.FlyingObject,sphere.Y,sphere.X, size,size);
 
         }
@@ -108,8 +105,41 @@ namespace Wind.Forms
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            sphere.X++;
-            sphere.Y++;
+            var sphereCordX = sphere.X / (FormConst.ObjectSize * scale);
+            var sphereCordY = sphere.Y / (FormConst.ObjectSize * scale);
+
+            if (sphere.Y <= width - FormConst.ObjectSize * scale && sphere.X < height - FormConst.ObjectSize * scale)
+            {
+                if (airMap[sphereCordX, sphereCordY] != null)
+                {
+                    Console.WriteLine('a');
+                    switch (airMap[sphereCordX, sphereCordY].Direction)
+                    {
+                        case Direction.Down:
+                            if (level[sphereCordX, sphereCordY] == null)
+                                sphere.X += Convert.ToInt32(airMap[sphereCordX, sphereCordY].Flow);
+                            break;
+                        case Direction.Up:
+                            if (level[sphereCordX, sphereCordY] == null)
+                                sphere.X -= Convert.ToInt32(airMap[sphereCordX, sphereCordY].Flow);
+                            break;
+                        case Direction.Left:
+                            if (level[sphereCordX, sphereCordY] == null)
+                                sphere.Y -= Convert.ToInt32(airMap[sphereCordX, sphereCordY].Flow);
+                            break;
+                        case Direction.Right:
+                            if (level[sphereCordX, sphereCordY] == null)
+                                sphere.Y += Convert.ToInt32(airMap[sphereCordX, sphereCordY].Flow);
+                            break;
+                    }
+
+                }
+                else if (true)
+                {
+                    sphere.X++;
+                }
+            }
+
             this.Refresh();
         }
     }

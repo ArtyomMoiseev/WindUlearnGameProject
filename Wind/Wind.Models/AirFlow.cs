@@ -29,7 +29,7 @@ namespace Wind.Models
                     var x = i + 1;
                     while (x < map.GetLength(0) && map[x, j] == null)
                     {
-                        flowMap[x, j] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Down);
+                        flowMap[x, j] = new AirFlowNode(map[i, j].StreamForce * GameConst.Attenuation, Direction.Down);
                         x++;
                         count++;
                     }
@@ -41,7 +41,7 @@ namespace Wind.Models
                     while (x >= 0 && map[x, j] == null)
                     {
                         Console.WriteLine("w");
-                        flowMap[i, j] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Up);
+                        flowMap[x, j] = new AirFlowNode(map[i,j].StreamForce - count * GameConst.Attenuation, Direction.Up);
                         x--;
                         count++;
                     }
@@ -52,7 +52,7 @@ namespace Wind.Models
                     var y = j + 1;
                     while (y < map.GetLength(1) && !map[i, y].IsStaticObject)
                     {
-                        flowMap[i, y] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Right);
+                        flowMap[i, y] = new AirFlowNode(map[i, j].StreamForce - count * GameConst.Attenuation, Direction.Right);
                         y++;
                         count++;
                     }
@@ -63,7 +63,7 @@ namespace Wind.Models
                     var y = j - 1;
                     while (y >= 0 && !map[i, y].IsStaticObject)
                     {
-                        flowMap[i, y] = new AirFlowNode(10 - count * GameConst.Attenuation, Direction.Left);
+                        flowMap[i, y] = new AirFlowNode(map[i, j].StreamForce - count * GameConst.Attenuation, Direction.Left);
                         y--;
                         count++;
                     }

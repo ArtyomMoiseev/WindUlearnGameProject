@@ -19,6 +19,10 @@
 
         void Change();
 
+        double StreamForce
+        {
+            get;
+        }
         Direction direction { get; set; }
     }
 }

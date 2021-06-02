@@ -23,6 +23,8 @@ namespace Wind.Models
         {
         }
 
+        public double StreamForce { get; }
+
         public Direction direction { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Wind.Models
     }
     public class FanMapObject : IGameMapObject
     {
-        public double StreamForce;
+        public double StreamForce { get; set; }
         public Direction Direction;
         public string ImageName;
         private readonly List<FanMode> modeList;
@@ -45,6 +45,7 @@ namespace Wind.Models
             StreamForce = modeList[stateNum].StreamForce;
             ImageName = modeList[stateNum].ImageName;
         }
+
 
         public Direction direction { get; set; }
 
